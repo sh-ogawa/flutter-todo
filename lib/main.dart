@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/todo_list.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Todo Application',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Task list'),
@@ -44,13 +36,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _taskNameController = TextEditingController();
-  var _tasks = [];
-
-  void _taskAdd() {
+  void _hoge() {
     setState(() {
-      _tasks.add(_taskNameController.text);
-      _taskNameController.text = '';
+
     });
   }
 
@@ -60,34 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SafeArea(child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'task name',
-              ),
-              controller: _taskNameController,
-            ),
-            Expanded(
-                child: ListView.builder(
-                    padding: const EdgeInsets.all(8.0),
-                    itemCount: _tasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 50,
-                        child: Center(child: Text('Task name: ${_tasks[index]}')),
-                      );
-                    }
-                )
-            )
-          ],
-        ),
-      )),
+      body: SafeArea(child: TodoListPage()),
       floatingActionButton: FloatingActionButton(
-        onPressed: _taskAdd,
+        onPressed: _hoge,
         tooltip: 'Task add',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
