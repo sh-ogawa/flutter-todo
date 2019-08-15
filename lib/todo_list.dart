@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_todo/i10n/localization.dart';
+
 class TodoListPage extends StatefulWidget {
   TodoListPage({Key key}) : super(key: key);
 
@@ -27,7 +29,7 @@ class _TodoListPageState extends State<TodoListPage> {
           TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: 'task name',
+              labelText: AppLocalizations.of(context).taskName,
             ),
             controller: _taskNameController,
             onEditingComplete: _taskAdd,
@@ -39,7 +41,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 50,
-                      child: Center(child: Text('Task name: ${_tasks[index]}')),
+                      child: Center(child: Text('${AppLocalizations.of(context).taskName}: ${_tasks[index]}')),
                     );
                   }
               )
